@@ -8,7 +8,8 @@ npm i
 
 npm run dev
 
-Observações sobre o projeto
+Observações sobre o projeto.
+
 No package.json criado coloquei as dependências fixas:
 
 "devDependencies": {
