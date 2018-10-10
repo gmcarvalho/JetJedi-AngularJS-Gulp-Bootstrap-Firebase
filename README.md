@@ -9,6 +9,7 @@ Observações sobre o projeto
 No package.json criado coloquei as dependências fixas:
 
 "devDependencies": {
+
     "admin-lte": "2.3.11",
     "angular": "1.6.6",
     "angular-animate": "1.6.6",
@@ -27,6 +28,7 @@ No package.json criado coloquei as dependências fixas:
     "gulp-watch": "4.3.11",
     "gulp-webserver": "0.9.1",
     "run-sequence": "2.2.0"
+	
  }
  
  Desse modo, quando rodar o npm i isso baixará todas as dependência para seu node_modules.
@@ -34,9 +36,11 @@ No package.json criado coloquei as dependências fixas:
  Nos scripts acrescentei o dev e production:
  
  "scripts": {
+ 
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "gulp",
     "production": "gulp --production"
+    
   }
   
   Após fazer todo o mapeamento do Gulp, é só rodar o projeto usando o 'npm run dev'
