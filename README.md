@@ -1,8 +1,11 @@
 # Projeto-AngularJS-usando-Gulp
 
 Instalar o node
+
 git clone https://github.com/gmcarvalho/Projeto-AngularJS-usando-Gulp.git
+
 npm i
+
 npm run dev
 
 Observações sobre o projeto
