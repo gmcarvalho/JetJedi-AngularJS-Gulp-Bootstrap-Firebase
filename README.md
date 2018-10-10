@@ -40,8 +40,3 @@ No package.json criado coloquei as dependências fixas:
   }
   
   Após fazer todo o mapeamento do Gulp, é só rodar o projeto usando o 'npm run dev'
-  
-  
- 
-  
-  
