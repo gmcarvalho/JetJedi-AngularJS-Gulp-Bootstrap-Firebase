@@ -1,0 +1,28 @@
+<content-header name="JetJedi" small="Lista"></content-header>
+
+<section class="content" ng-controller="ListaJediController as vm">
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+            
+            <li>
+                <a href data-target="#tabCreate" ng-click="vm.tabInsert()" data-toggle="tab">
+                    <i class="fa fa-plus"></i> Incluir
+                </a>
+            </li>
+            <li>
+                <a href data-target="#tabList" ng-click="vm.tabSearch()" data-toggle="tab">
+                    <i class="fa fa-bars"></i> Lista
+                </a>
+            </li>
+           
+        </ul>
+
+        <div class="tab-content">
+            <div class="tab-pane" ng-class="[vm.isIncluir == true ? 'active':'false']" id="tabCreate" ng-include="'listaJedi/form.html'"></div>
+        </div>
+        <div class="tab-content">
+                <div class="tab-pane" ng-class="[vm.isList == true ? 'active':'false']" id="tabList" ng-include="'listaJedi/list.html'"></div>
+        </div>
+      
+    </div>
+</section>

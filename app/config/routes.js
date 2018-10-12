@@ -4,9 +4,9 @@ angular.module('app').config([
         $stateProvider.state('dashboard', {
             url: '/dashboard',
             templateUrl: 'dashboard/dashboard.html'
-        }).state('billingCycle', {
-            url: '/billingCycle',
-            templateUrl: 'billingCycle/tabs.html'
+        }).state('listaJedi', {
+            url: '/listaJedi',
+            templateUrl: 'listaJedi/tabs.html'
         })
 
         $urlRouterProvider.otherwise('dashboard');

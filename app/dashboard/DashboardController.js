@@ -17,10 +17,6 @@ function DashboardController($http, $scope){
         status
     }
 
-    vm.status = {
-        description: ''
-    }
-
     vm.teste = [];
 
    vm.searchJedi();
