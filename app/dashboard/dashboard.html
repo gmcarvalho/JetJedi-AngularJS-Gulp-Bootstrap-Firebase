@@ -1,39 +1,12 @@
 <content-header name="Dashboard" small="Versão 1.0"></content-header>
 
-<section class="content" ng-controller="DashboardController as vm">
-    <div class="col-xs-4">
-        <div class="small-box bg-green">
-            <div class="inner">
-                <h3>R$10,00</h3>
-                <p>Total de créditos</p>
+<div class="row">
+        <section class="content" ng-controller="DashboardController as vm">
+            <div class="col-xs-4">
+                <div class="small-box">
+                        <canvas id="myChart" width="100%" height="100%"></canvas>
+                </div>
             </div>
-            <div class="icon">
-                <i class="fa fa-bank"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-4">
-        <div class="small-box bg-red">
-            <div class="inner">
-                <h3>R$10,00</h3>
-                <p>Total de débitos</p>
-            </div>
-            <div class="icon">
-                <i class="fa fa-credit-card"></i>
-            </div>
-        </div>
-    </div>
-    <div class="col-xs-4">
-        <div class="small-box bg-blue">
-            <div class="inner">
-                <h3 ng-repeat="obj in vm.obj">{{obj.name}}</h3>
-                <p>Valor consolidado</p>
-            </div>
-            <div class="icon">
-                <i class="fa fa-money"></i>
-            </div>
-        </div>
+        </section>
+</div>
 
-        <h1 ng-repeat="obj in vm.obj"></h1>
-    </div>
-</section>

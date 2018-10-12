@@ -16,7 +16,7 @@ gulp.task('deps.js', () => {
         'node_modules/admin-lte/plugins/slimScroll/jquery.slimscroll.min.js',
         'node_modules/admin-lte/dist/js/app.min.js',
         'node_modules/firebase/firebase.js',
-    
+        'node_modules/chart.js/dist/Chart.js',
     ]) 
     .pipe(uglify())
     .pipe(concat('deps.min.js'))
