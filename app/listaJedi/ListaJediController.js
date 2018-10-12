@@ -50,7 +50,8 @@ function ListaJediController($http, $scope){
         db.collection("jedi").add({ 
             name: vm.jedi.name,
             planet: vm.jedi.planet,
-           status: "status/master"
+            status: "status/master",
+            master: vm.jedi.master
         })
         .then(function(docRef) {
             vm.searchJedi();
