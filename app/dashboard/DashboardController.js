@@ -4,18 +4,24 @@ angular.module('app').controller('DashboardController', [
     DashboardController,
 ])
 
-
 function DashboardController($http, $scope){
-    console.log("teste");
     var vm = this;
     vm.searchJedi = searchJedi;
     vm.obj = [];
+    vm.listaStatus = [];
+    
     vm.jedi = {
         master: '',
         name: '',
         planet: '',
         status
     }
+
+    vm.status = {
+        description: ''
+    }
+
+    vm.teste = [];
 
    vm.searchJedi();
 
@@ -24,53 +30,125 @@ function DashboardController($http, $scope){
             querySnapshot.forEach((doc) => {
                 vm.jedi = doc.data();
                 vm.obj.push(vm.jedi);
-                
-            //console.log(`${doc} => ${doc.data()}`);
             });
-            
-            console.log(vm.obj);
+            montaChart(vm.obj);
+            //montaChartJediPorStatus(vm.obj);
         });
-        console.log('entrou aqui');
-        console.log(vm.obj);
     }
 
+    function montaChartJediPorStatus(obj){
+        
+        var listaStatus = [];
+        
+        for(var x = 0; x < obj.length; x++){
+           
 
-    var ctx = document.getElementById("myChart");
-    var myChart = new Chart(ctx, {
-    type: 'pie',
-    data: {
-        labels: ["Red", "Blue", "Yellow", "Green", "Purple", "Orange"],
-        datasets: [{
-            label: '# of Votes',
-            data: [12, 19, 3, 5, 2, 3],
-            backgroundColor: [
-                'rgba(255, 99, 132, 0.2)',
-                'rgba(54, 162, 235, 0.2)',
-                'rgba(255, 206, 86, 0.2)',
-                'rgba(75, 192, 192, 0.2)',
-                'rgba(153, 102, 255, 0.2)',
-                'rgba(255, 159, 64, 0.2)'
-            ],
-            borderColor: [
-                'rgba(255,99,132,1)',
-                'rgba(54, 162, 235, 1)',
-                'rgba(255, 206, 86, 1)',
-                'rgba(75, 192, 192, 1)',
-                'rgba(153, 102, 255, 1)',
-                'rgba(255, 159, 64, 1)'
-            ],
-            borderWidth: 1
-        }]
-    },
-    options: {
-        scales: {
-            yAxes: [{
-                ticks: {
-                    beginAtZero:true
+            var encontrou = false;
+            if(listaStatus.length > 0){
+                var size = listaStatus.length;
+                
+                for(var i = 0; i < size; i++){
+                    for(st = 0; st < obj[x].status.length; st++){
+                        if(listaStatus[i].status == obj[x].status[i].description){
+                            listaStatus[i].qtde = listaStatus[i].qtde + 1; 
+                            encontrou = true;
+                        }
+                    }
+                    
+                    if(!encontrou){
+                        listaStatus.push({qtde: 1, status: obj[x].status[i], percentual: 0});
+                    }
                 }
-            }]
+
+                
+            }else{
+                listaStatus.push({qtde: 1, status: obj[x].status[i], percentual: 0});
+                
+            }
         }
+        console.log(listaStatus);
+        //calculaPercentualPorJedi(listaStatus, false, obj.length);
     }
-});
-    
+
+    function montaChart(obj){
+        var listaPlanetas = [];
+        
+        for(var x = 0; x < obj.length; x++){
+            var encontrou = false;
+            if(listaPlanetas.length > 0){
+                var size = listaPlanetas.length;
+                
+                for(var i = 0; i < size; i++){
+                    if(listaPlanetas[i].planeta == obj[x].planet){
+                        listaPlanetas[i].qtde = listaPlanetas[i].qtde + 1; 
+                        encontrou = true;
+                    }
+                }
+
+                if(!encontrou){
+                    listaPlanetas.push({qtde: 1, planeta: obj[x].planet, percentual: 0});
+                }
+            }else{
+                listaPlanetas.push({qtde: 1, planeta: obj[x].planet, percentual: 0});
+                
+            }
+        }
+
+        calculaPercentualPorJedi(listaPlanetas, true, obj.length);
+    }
+
+    function calculaPercentualPorJedi(list, isPlanet, quantidadeJedi){
+        for(var i = 0; i < list.length; i++){
+            var percentual = (list[i].qtde / quantidadeJedi) * 100;
+            list[i].percentual = percentual;
+        }
+
+        var labels = [];
+        var data = [];
+        for(var i = 0; i < list.length; i++){
+            if(isPlanet) {
+                labels.push(list[i].planeta);   
+            }
+            else {
+                labels.push(list[i].status);   
+            }
+            data.push(list[i].percentual);
+        }
+
+        chart(labels, data);
+    }
+
+     function chart(labels, data){
+            var ctx = document.getElementById("myChart");
+            var myChart = new Chart(ctx, {
+            type: 'pie',
+            data: {
+                labels: labels,
+                datasets: [{
+                    label: '# of Votes',
+                    data: data,
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)',
+                        'rgba(255, 255, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255,99,132,1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)',
+                        'rgba(255, 255, 64, 0.2)'
+                    ],
+                    borderWidth: 2
+                }]
+                },
+            });
+        
+    }
 }
