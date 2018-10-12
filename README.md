@@ -2,13 +2,13 @@
 
 Instalar o node
 
-git clone https://github.com/gmcarvalho/Projeto-AngularJS-usando-Gulp.git
+git clone https://github.com/gmcarvalho/JetJedi-AngularJS-Gulp-Bootstrap-Firebase.git
 
 npm i
 
 npm run dev
 
-Observações sobre o projeto.
+Observações sobre o projeto, apenas a nível de conhecimento.
 
 No package.json criado coloquei as dependências fixas:
 
@@ -35,7 +35,7 @@ No package.json criado coloquei as dependências fixas:
 	
  }
  
- Desse modo, quando rodar o npm i isso baixará todas as dependência para seu node_modules.
+ Desse modo, quando rodar o npm i isso baixará todas as dependência para seu node_modules. Não se preocupe que isso é automárico, assim que der o npm install todas as dependências serão instaladas para você.
  
  Nos scripts acrescentei o dev e production:
  
@@ -46,5 +46,10 @@ No package.json criado coloquei as dependências fixas:
     "production": "gulp --production"
     
   }
+  
+  A diferenca entre os dois modos de rodar é apenas o server, o production ignora o server, e roda apenas a aplicação com suas dependências.
+  
+  
+  
   
   Após fazer todo o mapeamento do Gulp, é só rodar o projeto usando o 'npm run dev'
