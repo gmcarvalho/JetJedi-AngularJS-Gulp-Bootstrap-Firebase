@@ -96,7 +96,7 @@ function DashboardController($http, $scope){
     function calculaPercentualPorJedi(list, isPlanet, quantidadeJedi){
         for(var i = 0; i < list.length; i++){
             var percentual = (list[i].qtde / quantidadeJedi) * 100;
-            list[i].percentual = percentual;
+            list[i].percentual = percentual.toFixed(1);
         }
 
         var labels = [];
