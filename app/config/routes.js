@@ -1,5 +1,5 @@
 angular.module('app').config([
-    '$stateProvider', '$urlRouterProvider',
+    '$stateProvider', '$urlRouterProvider', 
     function($stateProvider, $urlRouterProvider){
         $stateProvider.state('dashboard', {
             url: '/dashboard',
