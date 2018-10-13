@@ -12,6 +12,7 @@ function ListaJediController($http, $scope){
 
     vm.isIncluir = true;
     vm.isList = false;
+    vm.msg = '';
     
     vm.jedi = {
         master: '',
@@ -47,6 +48,7 @@ function ListaJediController($http, $scope){
     }
 
     function incluir(){
+        vm.msg = '';
         db.collection("jedi").add({ 
             name: vm.jedi.name,
             planet: vm.jedi.planet,
@@ -55,9 +57,14 @@ function ListaJediController($http, $scope){
         })
         .then(function(docRef) {
             vm.searchJedi();
-            vm.jedi = new vm.jedi();
+            vm.jedi.name = '';
+            vm.jedi.status = '';
+            vm.jedi.master = '';
+            vm.jedi.planet = '';
+            vm.msg = 'Jedi cadastrado com sucesso!';
         })
         .catch(function(error) {
+            vm.msg = 'Infelizmente não foi possível realizar o cadastro, tente mais tarde!';
         });
     }
 }
