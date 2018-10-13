@@ -1,4 +1,4 @@
-# Projeto-AngularJS-usando-Gulp
+# JetJedi-AngularJS-Gulp-Bootstrap-Firebase
 
 Instalar o node
 
